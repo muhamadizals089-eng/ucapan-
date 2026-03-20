@@ -9,7 +9,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #1a2a33, #3a6073);
-    overflow: hidden;
+    overflow-x: hidden;
     color: white;
 }
 
@@ -72,7 +72,7 @@ h1 {
     position: fixed;
     top: -10px;
     color: #ff4d6d;
-    font-size: 20px;
+    font-size: 18px;
     animation: fall linear infinite;
 }
 
@@ -97,60 +97,32 @@ h1 {
 <div class="card" id="card">
     <h1>🌙 Happy Eid Mubarak 🤍</h1>
     <div id="text"></div>
-
     <div class="footer">
         dari Fahrizal buat kamuu my kaylaa 🤍
     </div>
 </div>
 
 <script>
-const message = `happy eid mubarak my favorite person 🤍🌙
+// Teks dibagi biar HP nggak nge-lag
+const messageParts = [
+`happy eid mubarak my favorite person 🤍🌙
 
 di hari yang penuh maaf ini, akuu datang bukan cuma untuk minta maaf tapi juga buat minta maaf banget IHIHIHI
 maafin akuu buat semua hal yang mungkin pernah nyakitin kamuu, buat sikap akuu yang egois, nyebelin, bikin kamuu sakit hati, dan sikap akuu yang kadang belum dewasa, untuk semua kata yang pernah ninggalin luka buat kamuu, dan maaf juga kalau selama ini akuu belum bisa bener-bener ngertiin kamuu seperti yang kamuu butuhin.
 
-akuu sadar, nggak semua yang kita jalanin kemarin itu mudah, dan mungkin emang kita butuh waktu untuk sama-sama belajar.
+akuu sadar, nggak semua yang kita jalanin kemarin itu mudah, dan mungkin emang kita butuh waktu untuk sama-sama belajar.`,
 
-tapi sejauh apa pun kita sekarang, ada satu hal yang gak bakal berubah dari akuu yaitu cara akuu mandang kamuu masih sama. kamuu tetap jadi seseorang yang pernah akuu perjuangin dengan tulus, yang pernah jadi tempat paling nyaman, dan yang sampai sekarang masih punya ruang di hati akuu.
+`tapi sejauh apa pun kita sekarang, ada satu hal yang gak bakal berubah dari akuu yaitu cara akuu mandang kamuu masih sama. kamuu tetap jadi seseorang yang pernah akuu perjuangin dengan tulus, yang pernah jadi tempat paling nyaman, dan yang sampai sekarang masih punya ruang di hati akuu.
 
-akuu nggak akan maksa waktu, nggak juga maksa keadaan. akuu cuma percaya, kalau sesuatu memang ditakdirkan untuk kembali, dia akan menemukan jalannya sendiri. dan kalau pun suatu hari nanti kita dipertemukan lagi, akuu harap itu bukan lagi versi kita yang dulu tapi versi kita yang lebih kuat, lebih tenang, dan lebih siap untuk saling menjaga.
+akuu nggak akan maksa waktu, nggak juga maksa keadaan. akuu cuma percaya, kalau sesuatu memang ditakdirkan untuk kembali, dia akan menemukan jalannya sendiri. dan kalau pun suatu hari nanti kita dipertemukan lagi, akuu harap itu bukan lagi versi kita yang dulu tapi versi kita yang lebih kuat, lebih tenang, dan lebih siap untuk saling menjaga.`,
 
-kalau sekarang kita harus berjalan sendiri dulu, nggak apa-apa. akuu tetap doain kamuu semoga bahagia, semoga hati kamuu tenang, dan semoga semua hal baik selalu dateng ke hidup kamuu.
+`kalau sekarang kita harus berjalan sendiri dulu, nggak apa-apa. akuu tetap doain kamuu semoga bahagia, semoga hati kamuu tenang, dan semoga semua hal baik selalu dateng ke hidup kamuu.
 
 selamat hari raya idul fitri, mohon maaf lahir dan batin 🤍✨
 dan di antara semua doa yang akuu panjatkan hari ini ada satu nama yang masih akuu sebut dengan pelan.
 
-akuu nggak tahu kapan atau gimana caranya, tapi akuu masih nyimpen harapan kecil semoga suatu hari nanti kita bisa kembali, bukan sekadar mengulang, tapi memperbaiki jadi kita yang lebih baik dari sebelumnya.`;
+akuu nggak tahu kapan atau gimana caranya, tapi akuu masih nyimpen harapan kecil semoga suatu hari nanti kita bisa kembali, bukan sekadar mengulang, tapi memperbaiki jadi kita yang lebih baik dari sebelumnya.`
+];
 
-let i = 0;
-const speed = 25;
-
-function start() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("card").style.display = "block";
-    typing();
-}
-
-function typing() {
-    if (i < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(i);
-        i++;
-        setTimeout(typing, speed);
-    }
-}
-
-/* ❤️ love jatuh */
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 8000);
-}
-setInterval(createHeart, 300);
-</script>
-
-</body>
-</html>
+let partIndex = 0;
+let charIndex
